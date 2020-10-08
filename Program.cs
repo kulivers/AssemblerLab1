@@ -12,7 +12,7 @@ namespace AssemblerLab1
         public int CommandNumber;
         public string CommandName;
         public int Argument;
-        public string BinArgument;
+       
         public string BinCommand = "0000_????_????_0000";
 
         public Command(int _numberOfCommand, int _arg)
@@ -20,7 +20,6 @@ namespace AssemblerLab1
             this.CommandNumber = _numberOfCommand;
             this.CommandName = Cpu.GetCmdName(_numberOfCommand);
             this.Argument = _arg;
-            this.BinArgument = Program.GetBinForm(_arg);
             this.BinCommand = GetbinCommand(_numberOfCommand, _arg);
         }
         public Command(string _commandName, int _arg)
@@ -28,12 +27,13 @@ namespace AssemblerLab1
             this.CommandNumber = Cpu.GetCmdNum(_commandName);
             this.CommandName = _commandName;
             this.Argument = _arg;
-            this.BinArgument = Program.GetBinForm(_arg);
             this.BinCommand = GetbinCommand(CommandNumber, _arg);
         }
         public Command(string _binCmd)
         {
-
+            CommandNumber = GetCmdNum(_binCmd);
+            CommandName = Cpu.GetCmdName(CommandNumber);
+            Argument = GetArgNum(_binCmd);
         }
         public static int GetArgNum(string _binCmd)
         {
