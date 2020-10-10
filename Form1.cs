@@ -57,7 +57,7 @@ namespace AssemblerLab1
         private void button1_Click(object sender, EventArgs e)
         {
             SetValues();
-            //cp.DoOneCommand();
+            cp.DoOneCommand();
 
         }
 
