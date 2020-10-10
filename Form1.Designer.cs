@@ -51,6 +51,9 @@
             this.textBox_ZF = new System.Windows.Forms.TextBox();
             this.CommandsList = new System.Windows.Forms.ListView();
             this.CommandsList_label = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PC = new System.Windows.Forms.Label();
+            this.textBox_PC = new System.Windows.Forms.TextBox();
             this.Registers_Groupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -72,7 +75,7 @@
             this.Registers_Groupbox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Registers_Groupbox.Location = new System.Drawing.Point(504, 23);
             this.Registers_Groupbox.Name = "Registers_Groupbox";
-            this.Registers_Groupbox.Size = new System.Drawing.Size(147, 104);
+            this.Registers_Groupbox.Size = new System.Drawing.Size(147, 123);
             this.Registers_Groupbox.TabIndex = 0;
             this.Registers_Groupbox.TabStop = false;
             this.Registers_Groupbox.Text = "Registrs";
@@ -86,14 +89,16 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.PC);
             this.splitContainer1.Panel1.Controls.Add(this.CX_label);
             this.splitContainer1.Panel1.Controls.Add(this.AX_label);
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.textBox_PC);
             this.splitContainer1.Panel2.Controls.Add(this.textBox_CX);
             this.splitContainer1.Panel2.Controls.Add(this.textBox_AX);
-            this.splitContainer1.Size = new System.Drawing.Size(141, 83);
+            this.splitContainer1.Size = new System.Drawing.Size(141, 102);
             this.splitContainer1.SplitterDistance = 76;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -307,11 +312,37 @@
             this.CommandsList_label.TabIndex = 9;
             this.CommandsList_label.Text = "Commands List";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "label2";
+            // 
+            // PC
+            // 
+            this.PC.AutoSize = true;
+            this.PC.Location = new System.Drawing.Point(11, 76);
+            this.PC.Name = "PC";
+            this.PC.Size = new System.Drawing.Size(28, 16);
+            this.PC.TabIndex = 3;
+            this.PC.Text = "PC";
+            // 
+            // textBox_PC
+            // 
+            this.textBox_PC.Location = new System.Drawing.Point(3, 73);
+            this.textBox_PC.Name = "textBox_PC";
+            this.textBox_PC.Size = new System.Drawing.Size(38, 22);
+            this.textBox_PC.TabIndex = 2;
+            // 
             // Assembler_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 338);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.CommandsList_label);
             this.Controls.Add(this.CommandsList);
             this.Controls.Add(this.Flags_Groupbox);
@@ -368,6 +399,9 @@
         private System.Windows.Forms.TextBox textBox_CF;
         private System.Windows.Forms.ListView CommandsList;
         private System.Windows.Forms.Label CommandsList_label;
+        private System.Windows.Forms.Label PC;
+        private System.Windows.Forms.TextBox textBox_PC;
+        private System.Windows.Forms.Label label2;
     }
 }
 

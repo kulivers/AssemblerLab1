@@ -12,6 +12,22 @@ namespace AssemblerLab1
 {
     public partial class Assembler_form : Form
     {
+        Cpu cp = new Cpu();
+
+        private void SetValues()
+        {
+            textBox_AX.Text = Cpu.regs["AX"].ToString();
+            textBox_CX.Text = Cpu.regs["CX"].ToString();
+            textBox_PC.Text = Cpu.regs["PC"].ToString();
+
+            textBox_ZF.Text = Cpu.flags["ZF"].ToString();
+            textBox_SF.Text = Cpu.flags["SF"].ToString();
+            textBox_CF.Text = Cpu.flags["CF"].ToString();
+            textBox_OF.Text = Cpu.flags["OF"].ToString();
+
+            //textBox_command.Text = 
+            //textBox_command_bin.Text = 
+        }
         public Assembler_form()
         {
             InitializeComponent();
@@ -19,7 +35,6 @@ namespace AssemblerLab1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            button_start.PerformClick();
         }
 
         private void Registrs_Enter(object sender, EventArgs e)
@@ -29,10 +44,9 @@ namespace AssemblerLab1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string BinCommand = "1001_????_????_1011";
-            int a = Command.GetArgNum(BinCommand);
-            textBox_command_bin.Text = BinCommand;
-            textBox_command.Text = a.ToString();
+            SetValues();
+            //cp.DoOneCommand();
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,7 +106,7 @@ namespace AssemblerLab1
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)

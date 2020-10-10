@@ -98,8 +98,8 @@ namespace AssemblerLab1
         }
         public static int GetCmdNumByName(string _cmdName)
         {
-            _cmdName.ToUpper();
-            switch (_cmdName)
+            
+            switch (_cmdName.ToUpper())
             {
                 case "MOVAC":
                     return 0;
@@ -122,15 +122,19 @@ namespace AssemblerLab1
             switch (_numOfCmd)
             {
                 case 0:
-                    return "MOV";
+                    return "MOVAC";
                 case 1:
                     return "ADD";
                 case 2:
-                    return "DEC";
+                    return "MOVM";
                 case 3:
                     return "JNZ";
+                case 4:
+                    return "DEC";
+                case 5:
+                    return "EXIT";
                 default:
-                    throw new System.ArgumentException("Unknown command name");
+                    throw new System.Exception("Unknown num of command");
             }
         }
     }
@@ -146,9 +150,10 @@ namespace AssemblerLab1
 
         static public Dictionary<string, int> regs = new Dictionary<string, int>() { { "AX", 0 }, { "CX", 0 }, { "PC", 0 }, { "BX", 0 }, { "DX", 0 } };
         static public Dictionary<string, int> flags = new Dictionary<string, int>() { { "ZF", 0 }, { "CF", 0 }, { "SF", 0 }, { "OF", 0 } };
-        static List<int> arr = new List<int>() { 1, 2, 3, 4 };
+        static public List<int> arr = new List<int>() { 1, 2, 3, 4 };                                                  //sf-<0         of-overflow
 
-        List<Command> commands = new List<Command>() {
+        
+        static public List<Command> commands = new List<Command>() {
             new Command("MOVAC",0), //pc =0
             new Command("movm", 2),
             new Command("movac", arr.Count), //cx = arr.length
@@ -159,10 +164,55 @@ namespace AssemblerLab1
             new Command("jnz", 5), //jump to 5(add arr[i])
             new Command("exit", 0) //exit
         };
-        int iCmd = 0; // index вып комманды
+       static public int iCmd = 0; // index вып комманды
 
 
+        public void DoOneCommand()
+        {
+            if (commands.Count == 0)
+            {
+                throw new Exception("command arr is empty");
+            }
+            if (commands.Count >= 2 && iCmd ==0)
+            {
+                regs["PC"] = commands[1].CommandNumber; 
+            }
 
+            if(regs["PC"] != 5) //5-exit
+            {
+
+                parseAndDoCmd(commands[iCmd].CommandNumber);
+                iCmd++;
+                regs["PC"] = commands[iCmd+1].CommandNumber;
+            }
+            else
+            {
+                
+            }
+        }
+        public void parseAndDoCmd(int cmdNumber)
+        {
+            switch (commands[iCmd].CommandNumber)// parse cmd
+            {
+                case 0:
+                    Movac(commands[iCmd].Argument);
+                    break;
+                case 1:
+                    add(commands[iCmd].Argument);
+                    break;
+                case 2:
+                    movm(commands[iCmd].Argument);
+                    break;
+                case 3:
+                    jnz(5);
+                    break;
+                case 4:
+                    dec(commands[iCmd].Argument);
+                    break;
+                default:
+                    throw new Exception("unknown cmd");
+            }
+        }
         //MOVAC<A>; загрузить в регистр-аккумулятор число 
         public void Movac(int a)
         {
