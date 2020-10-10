@@ -16,17 +16,21 @@ namespace AssemblerLab1
 
         private void SetValues()
         {
-            textBox_AX.Text = Cpu.regs["AX"].ToString();
-            textBox_CX.Text = Cpu.regs["CX"].ToString();
-            textBox_PC.Text = Cpu.regs["PC"].ToString();
+            textBox_AX.Text = cp.regs["AX"].ToString();
+            textBox_CX.Text = cp.regs["CX"].ToString();
+            textBox_PC.Text = cp.regs["PC"].ToString();
 
-            textBox_ZF.Text = Cpu.flags["ZF"].ToString();
-            textBox_SF.Text = Cpu.flags["SF"].ToString();
-            textBox_CF.Text = Cpu.flags["CF"].ToString();
-            textBox_OF.Text = Cpu.flags["OF"].ToString();
+            textBox_ZF.Text = cp.flags["ZF"].ToString();
+            textBox_SF.Text = cp.flags["SF"].ToString();
+            textBox_CF.Text = cp.flags["CF"].ToString();
+            textBox_OF.Text = cp.flags["OF"].ToString();
 
-            //textBox_command.Text = 
-            //textBox_command_bin.Text = 
+            textBox_command.Text = cp.commands[cp.iCmd].CommandName;
+            textBox_command_bin.Text = cp.commands[cp.iCmd].BinCommand.ToString();
+
+            CommandsList.Items[cp.iCmd].Selected = true;
+
+
         }
         public Assembler_form()
         {
@@ -35,6 +39,14 @@ namespace AssemblerLab1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            foreach (var _command in cp.commands)
+            {
+                var str = new String[] { _command.CommandName, _command.Argument.ToString() };
+                ListViewItem item = new ListViewItem(str);
+
+                CommandsList.Items.Add(item);
+            }
+
         }
 
         private void Registrs_Enter(object sender, EventArgs e)
@@ -106,7 +118,7 @@ namespace AssemblerLab1
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -121,7 +133,7 @@ namespace AssemblerLab1
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

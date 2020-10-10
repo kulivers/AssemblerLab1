@@ -145,15 +145,10 @@ namespace AssemblerLab1
     {
         public Cpu()
         {
-
-        }
-
-        static public Dictionary<string, int> regs = new Dictionary<string, int>() { { "AX", 0 }, { "CX", 0 }, { "PC", 0 }, { "BX", 0 }, { "DX", 0 } };
-        static public Dictionary<string, int> flags = new Dictionary<string, int>() { { "ZF", 0 }, { "CF", 0 }, { "SF", 0 }, { "OF", 0 } };
-        static public List<int> arr = new List<int>() { 1, 2, 3, 4 };                                                  //sf-<0         of-overflow
-
-        
-        static public List<Command> commands = new List<Command>() {
+            regs = new Dictionary<string, int>() { { "AX", 0 }, { "CX", 0 }, { "PC", 0 }, { "BX", 0 }, { "DX", 0 } };
+            flags = new Dictionary<string, int>() { { "ZF", 0 }, { "CF", 0 }, { "SF", 0 }, { "OF", 0 } };
+            arr = new List<int>() { 1, 2, 3, 4 };                              //sf-<0        of-overflow
+            commands = new List<Command>() {
             new Command("MOVAC",0), //pc =0
             new Command("movm", 2),
             new Command("movac", arr.Count), //cx = arr.length
@@ -164,7 +159,15 @@ namespace AssemblerLab1
             new Command("jnz", 5), //jump to 5(add arr[i])
             new Command("exit", 0) //exit
         };
-       static public int iCmd = 0; // index вып комманды
+        }
+
+        public Dictionary<string, int> regs;
+        public Dictionary<string, int> flags;
+        public List<int> arr;
+
+
+        public List<Command> commands;
+        public int iCmd = 0; // index вып комманды
 
 
         public void DoOneCommand()
