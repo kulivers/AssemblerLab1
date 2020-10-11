@@ -188,8 +188,8 @@ namespace AssemblerLab1
                 }
                 else 
                 {
-                    regs["PC"] = commands[iCmd + 1].CommandNumber;
                     parseAndDoCmd(commands[iCmd].CommandNumber);
+                    regs["PC"] = commands[iCmd + 1].CommandNumber;
                     iCmd++;
                 }
             }
