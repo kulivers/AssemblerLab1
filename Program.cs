@@ -206,7 +206,7 @@ namespace AssemblerLab1
                     Movac(commands[iCmd].Argument);
                     break;
                 case 1:
-                    add(commands[iCmd].Argument);
+                    add(regs["CX"]);
                     break;
                 case 2:
                     movm(commands[iCmd].Argument);
@@ -230,7 +230,7 @@ namespace AssemblerLab1
         //ADD<B>; содержимое аккумулятора увеличить на значение числа 
         public void add(int b)
         {
-            regs["AX"] += b;
+            regs["AX"] = regs["AX"] + b;
         }
         //MOVM<C>; сохранить содержимое аккумулятора в ячейке памяти С.
         public void movm(int c)//у нас С - это индекс регистра куда

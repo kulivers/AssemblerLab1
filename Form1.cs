@@ -43,13 +43,7 @@ namespace AssemblerLab1
             string nameReg= "";
             foreach (var _command in cp.commands)
             {
-                //    movm, 2 - ax->pc
-                //movm, 1 - Ax->cx
-                //movac, val - val->ax
-                //add, val - Ax += val
-                //dec, 1 - cx--
-                //jnz val -jump(puhuy)
-
+                
                 switch (_command.CommandName)
                 {//
                     case "movac":
