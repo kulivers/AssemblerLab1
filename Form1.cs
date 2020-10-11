@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace AssemblerLab1
             textBox_command_bin.Text = cp.commands[cp.iCmd].BinCommand.ToString();
 
             CommandsList.Items[cp.iCmd].Selected = true;
-
+            textBox_index.Text = cp.iCmd.ToString();
 
         }
         public Assembler_form()
@@ -39,14 +40,44 @@ namespace AssemblerLab1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            string nameReg= "";
             foreach (var _command in cp.commands)
             {
-                var str = new String[] { _command.CommandName, _command.Argument.ToString() };
+                //    movm, 2 - ax->pc
+                //movm, 1 - Ax->cx
+                //movac, val - val->ax
+                //add, val - Ax += val
+                //dec, 1 - cx--
+                //jnz val -jump(puhuy)
+
+                switch (_command.CommandName)
+                {//
+                    case "movac":
+                        nameReg = "AX";
+                        break;
+                    case "movm": //взять аргумент, и найти регистр с таким индексом, и извлечь key
+                        int i = _command.Argument;
+                        nameReg = cp.regs.ElementAt(i).Key;
+                        break;
+                    case "add":
+                        nameReg = "arr[i]";
+                        break;
+                    case "dec":
+                        nameReg = "CX";
+                        break;
+                    case "jnz":
+                        nameReg = "";
+                        break;
+                }
+
+
+                var str = new String[] {_command.CommandNumber.ToString(), _command.CommandName, _command.Argument.ToString(),  nameReg};
                 ListViewItem item = new ListViewItem(str);
 
                 CommandsList.Items.Add(item);
             }
-
+            SetValues();
+            //textBox_PC.Text = cp.commands[1].CommandNumber.ToString();
         }
 
         private void Registrs_Enter(object sender, EventArgs e)
@@ -56,9 +87,9 @@ namespace AssemblerLab1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SetValues();
             cp.DoOneCommand();
-
+            SetValues();
+            
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -118,11 +149,13 @@ namespace AssemblerLab1
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
+            textBox_SF.Select();
 
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
+            textBox_ZF.Select();
 
         }
 
@@ -132,6 +165,40 @@ namespace AssemblerLab1
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_AX_TextChanged(object sender, EventArgs e)
+        {
+            textBox_AX.Select();
+        }
+
+        private void textBox_CX_TextChanged(object sender, EventArgs e)
+        {
+            textBox_CX.Select();
+
+        }
+
+        private void textBox_PC_TextChanged(object sender, EventArgs e)
+        {
+            textBox_PC.Select();
+
+        }
+
+        private void textBox_CF_TextChanged(object sender, EventArgs e)
+        {
+            textBox_CF.Select();
+
+        }
+
+        private void textBox_OF_TextChanged(object sender, EventArgs e)
+        {
+            textBox_OF.Select();
+
+        }
+
+        private void label2_Click_2(object sender, EventArgs e)
         {
 
         }

@@ -98,7 +98,7 @@ namespace AssemblerLab1
         }
         public static int GetCmdNumByName(string _cmdName)
         {
-            
+
             switch (_cmdName.ToUpper())
             {
                 case "MOVAC":
@@ -149,15 +149,16 @@ namespace AssemblerLab1
             flags = new Dictionary<string, int>() { { "ZF", 0 }, { "CF", 0 }, { "SF", 0 }, { "OF", 0 } };
             arr = new List<int>() { 1, 2, 3, 4 };                              //sf-<0        of-overflow
             commands = new List<Command>() {
-            new Command("MOVAC",0), //pc =0
-            new Command("movm", 2),
+            //new Command("movac",0), //pc =0
+            //new Command("movm", 2),
             new Command("movac", arr.Count), //cx = arr.length
             new Command("movm", 1),
             new Command("movac", 0), //ax = 0
             new Command("add", arr[regs["CX"]]), //ax += arr[i]
             new Command("dec", 1), //dec cx
-            new Command("jnz", 5), //jump to 5(add arr[i])
+            new Command("jnz", 3), //jump to 5(add arr[i])
             new Command("exit", 0) //exit
+
         };
         }
 
@@ -176,21 +177,25 @@ namespace AssemblerLab1
             {
                 throw new Exception("command arr is empty");
             }
-            if (commands.Count >= 2 && iCmd ==0)
-            {
-                regs["PC"] = commands[1].CommandNumber; 
-            }
 
-            if(regs["PC"] != 5) //5-exit
+            if (regs["PC"] != 5) //5-exit
             {
-
-                parseAndDoCmd(commands[iCmd].CommandNumber);
-                iCmd++;
-                regs["PC"] = commands[iCmd+1].CommandNumber;
+                if (iCmd == 0 && commands.Count == 1)
+                {
+                    regs["PC"] = commands[iCmd].CommandNumber;
+                    parseAndDoCmd(commands[iCmd].CommandNumber);
+                    iCmd++;
+                }
+                else 
+                {
+                    regs["PC"] = commands[iCmd + 1].CommandNumber;
+                    parseAndDoCmd(commands[iCmd].CommandNumber);
+                    iCmd++;
+                }
             }
             else
             {
-                
+                Application.Exit();   
             }
         }
         public void parseAndDoCmd(int cmdNumber)
@@ -207,7 +212,7 @@ namespace AssemblerLab1
                     movm(commands[iCmd].Argument);
                     break;
                 case 3:
-                    jnz(5);
+                    jnz(commands[iCmd].Argument-1);//-1 тк потом +1 прибовляем
                     break;
                 case 4:
                     dec(commands[iCmd].Argument);
@@ -228,21 +233,25 @@ namespace AssemblerLab1
             regs["AX"] += b;
         }
         //MOVM<C>; сохранить содержимое аккумулятора в ячейке памяти С.
-        public void movm(int c)//у нас С - это индекс регистра
+        public void movm(int c)//у нас С - это индекс регистра куда
         {
             string regName = regs.ElementAt(c).Key;
-            regs[regName] = c;
+            regs[regName] = regs["AX"];
         }
         //ax--
         public void dec(int c)//у нас С - это индекс регистра
         {
             string regName = regs.ElementAt(c).Key;
             regs[regName]--;
-            flags["ZF"] = (regs[regName] == 0) ? 1 : 0;
+            
+            if(regs[regName] == 0)
+            {
+                flags["ZF"] = 1;
+            }
         }
         public void jnz(int c)//c - в какое место в массиве команд прыгаем, index
         {
-            if (flags["ZF"] == 1)
+            if (flags["ZF"] != 1)
             {
                 iCmd = c;
                 flags["ZF"] = 0;

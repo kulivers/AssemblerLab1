@@ -1,10 +1,10 @@
 C:\Users\Alla\source\repos\AssemblerLab1\bin\Debug\AssemblerLab1.exe.config
 C:\Users\Alla\source\repos\AssemblerLab1\bin\Debug\AssemblerLab1.exe
 C:\Users\Alla\source\repos\AssemblerLab1\bin\Debug\AssemblerLab1.pdb
-C:\Users\Alla\source\repos\AssemblerLab1\obj\Debug\AssemblerLab1.csprojAssemblyReference.cache
 C:\Users\Alla\source\repos\AssemblerLab1\obj\Debug\AssemblerLab1.Properties.Resources.resources
 C:\Users\Alla\source\repos\AssemblerLab1\obj\Debug\AssemblerLab1.csproj.GenerateResource.cache
 C:\Users\Alla\source\repos\AssemblerLab1\obj\Debug\AssemblerLab1.csproj.CoreCompileInputs.cache
 C:\Users\Alla\source\repos\AssemblerLab1\obj\Debug\AssemblerLab1.exe
 C:\Users\Alla\source\repos\AssemblerLab1\obj\Debug\AssemblerLab1.pdb
 C:\Users\Alla\source\repos\AssemblerLab1\obj\Debug\AssemblerLab1.Assembler_form.resources
+C:\Users\Alla\source\repos\AssemblerLab1\obj\Debug\AssemblerLab1.csprojAssemblyReference.cache
