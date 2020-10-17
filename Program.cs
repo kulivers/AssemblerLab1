@@ -147,7 +147,7 @@ namespace AssemblerLab1
         {
             regs = new Dictionary<string, int>() { { "AX", 0 }, { "CX", 0 }, { "PC", 0 }, { "BX", 0 }, { "DX", 0 } };
             flags = new Dictionary<string, int>() { { "ZF", 0 }, { "CF", 0 }, { "SF", 0 }, { "OF", 0 } };
-            arr = new List<int>() { 1, 2, 3, 4 };                              //sf-<0        of-overflow
+            arr = new List<int>() { 1, 2, 3, 4, 5};                              //sf-<0        of-overflow
             commands = new List<Command>() {
             //new Command("movac",0), //pc =0
             //new Command("movm", 2),
