@@ -17,14 +17,14 @@ namespace AssemblerLab1
 
         private void SetValues()
         {
-            textBox_AX.Text = cp.regs["AX"].ToString();
-            textBox_CX.Text = cp.regs["CX"].ToString();
-            textBox_PC.Text = cp.regs["PC"].ToString();
+            textBox_AX.Text = cp.Regs["AX"].ToString();
+            textBox_CX.Text = cp.Regs["CX"].ToString();
+            textBox_PC.Text = cp.Regs["PC"].ToString();
 
-            textBox_ZF.Text = cp.flags["ZF"].ToString();
-            textBox_SF.Text = cp.flags["SF"].ToString();
-            textBox_CF.Text = cp.flags["CF"].ToString();
-            textBox_OF.Text = cp.flags["OF"].ToString();
+            textBox_ZF.Text = cp.Flags["ZF"].ToString();
+            textBox_SF.Text = cp.Flags["SF"].ToString();
+            textBox_CF.Text = cp.Flags["CF"].ToString();
+            textBox_OF.Text = cp.Flags["OF"].ToString();
 
             textBox_command.Text = cp.commands[cp.iCmd].CommandName;
             textBox_command_bin.Text = cp.commands[cp.iCmd].BinCommand.ToString();
@@ -51,7 +51,7 @@ namespace AssemblerLab1
                         break;
                     case "movm": //взять аргумент, и найти регистр с таким индексом, и извлечь key
                         int i = _command.Argument;
-                        nameReg = cp.regs.ElementAt(i).Key;
+                        nameReg = cp.Regs.ElementAt(i).Key;
                         break;
                     case "add":
                         nameReg = "arr[i]";
