@@ -7,6 +7,13 @@ namespace AssemblerLab1
 {
     public class Cpu
     {
+        public Dictionary<string, int> Regs;
+        public Dictionary<string, int> Flags;
+        public List<int> arr;
+        public List<Command> commands;
+        public int iCmd = 0; // index вып комманды
+        public static string Word { get; private set; }
+
         public Cpu()
         {
             Regs = new Dictionary<string, int>() { { "AX", 0 }, { "CX", 0 }, { "PC", 0 }, { "BX", 0 }, { "DX", 0 } };
@@ -22,25 +29,8 @@ namespace AssemblerLab1
                 new Command("dec", 1), //dec cx
                 new Command("jnz", 3), //jump to 5(add arr[i])
                 new Command("exit", 0) //exit
-
             };
         }
-
-        static void Printhello(string word)
-        {
-            
-            Console.WriteLine(word);
-        }
-
-        public Dictionary<string, int> Regs;
-        public Dictionary<string, int> Flags;
-        public List<int> arr;
-
-
-        public List<Command> commands;
-        public int iCmd = 0; // index вып комманды
-        public static string Word { get; private set; }
-
 
         public void DoOneCommand()
         {

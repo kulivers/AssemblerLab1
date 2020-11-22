@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace AssemblerLab1
 {
-    class Command
+    public class Command
     {
         public int CommandNumber;
         public string CommandName;
