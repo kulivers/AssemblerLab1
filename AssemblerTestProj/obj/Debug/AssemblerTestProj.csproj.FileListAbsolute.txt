@@ -1,0 +1,17 @@
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\AssemblerTestProj.dll
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\AssemblerTestProj.pdb
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\dev\AssemblerLab1\AssemblerTestProj\obj\Debug\AssemblerTestProj.csprojAssemblyReference.cache
+C:\dev\AssemblerLab1\AssemblerTestProj\obj\Debug\AssemblerTestProj.csproj.CoreCompileInputs.cache
+C:\dev\AssemblerLab1\AssemblerTestProj\obj\Debug\AssemblerTestProj.csproj.CopyComplete
+C:\dev\AssemblerLab1\AssemblerTestProj\obj\Debug\AssemblerTestProj.dll
+C:\dev\AssemblerLab1\AssemblerTestProj\obj\Debug\AssemblerTestProj.pdb
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\AssemblerLab1.exe
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\AssemblerLab1.pdb
+C:\dev\AssemblerLab1\AssemblerTestProj\bin\Debug\AssemblerLab1.exe.config

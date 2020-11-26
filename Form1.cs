@@ -13,7 +13,7 @@ namespace AssemblerLab1
 {
     public partial class Assembler_form : Form
     {
-        Cpu cp = new Cpu();
+        Cpu8b cp = new Cpu8b();
 
         private void SetValues()
         {

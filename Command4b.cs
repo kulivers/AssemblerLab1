@@ -4,36 +4,25 @@ using System.Text;
 
 namespace AssemblerLab1
 {
-    public class Command
+    
+
+    public class Command_4b //здесь по старому, используется только 4 бита на команду
     {
         public int CommandNumber;
         public string CommandName;
         public int Argument;
-        public string BinCommand = "0000_????_????_0000";
+        public string BinCommand = "0000_0000_????_0000";
 
-        public Command(int _numberOfCommand, int _arg)
+        public Command_4b(string _commandName, int _arg)
         {
-            this.CommandNumber = _numberOfCommand;
-            this.CommandName = GetCmdName(_numberOfCommand);
-            this.Argument = _arg;
-            this.BinCommand = GetbinCommand(_numberOfCommand, _arg);
-        }
-        public Command(string _commandName, int _arg)
-        {
-            this.CommandNumber = GetCmdNumByName(_commandName);
+            this.CommandNumber = GetNumByName(_commandName);
             this.CommandName = _commandName;
             this.Argument = _arg;
             this.BinCommand = GetbinCommand(CommandNumber, _arg);
         }
-        public Command(string _binCmd)
-        {
-            CommandNumber = GetCmdNumByBin(_binCmd);
-            CommandName = GetCmdName(CommandNumber);
-            Argument = GetArgNum(_binCmd);
-        }
         public static int GetArgNum(string _binCmd)
         {
-            if (_binCmd.Length != 19) { throw new System.ArgumentException("Command length is not 16"); }
+            if (_binCmd.Length != 19) { throw new System.ArgumentException("Command_4b length is not 16"); }
             double sum = 0;
             for (int i = 15; i <= 18; i++)
             {
@@ -45,9 +34,9 @@ namespace AssemblerLab1
             }
             return Convert.ToInt32(sum);
         }
-        public static int GetCmdNumByBin(string _binCmd)
+        public static int GetNumByBin(string _binCmd)
         {
-            if (_binCmd.Length != 19) { throw new System.ArgumentException("Command length is not 16"); }
+            if (_binCmd.Length != 19) { throw new System.ArgumentException("Command_4b length is not 16"); }
             double sum = 0;
             for (int i = 0; i <= 3; i++)
             {
@@ -59,7 +48,7 @@ namespace AssemblerLab1
             }
             return Convert.ToInt32(sum);
         }
-        public static string GetbinCommand(int _commandNum, int _arg)
+        public static string GetbinCommand(int _commandNum, int _arg) 
         {
             string binCmdNum = Convert.ToString(_commandNum, 2);
             if (binCmdNum.Length > 4)
@@ -92,23 +81,24 @@ namespace AssemblerLab1
             return binCmdNum + "_????_????_" + binArg;
 
         }
-        public static int GetCmdNumByName(string _cmdName)
+        public static int GetNumByName(string _cmdName)
         {
 
             switch (_cmdName.ToUpper())
             {
-                case "MOVAC":
+                case "MOVAC_R":
                     return 0;
-                case "ADD":
+                case "ADD_L":
                     return 1;
-                case "MOVM":
+                case "MOVM_R":
                     return 2;
-                case "JNZ":
+                case "JNZ_L":
                     return 3;
-                case "DEC":
+                case "DEC_R":
                     return 4;
                 case "EXIT":
                     return 5;
+                
                 default:
                     throw new System.Exception("Unknown name of command");
             }
@@ -118,15 +108,15 @@ namespace AssemblerLab1
             switch (_numOfCmd)
             {
                 case 0:
-                    return "MOVAC";
+                    return "MOVAC_R";
                 case 1:
-                    return "ADD";
+                    return "ADD_L";
                 case 2:
-                    return "MOVM";
+                    return "MOVM_R";
                 case 3:
-                    return "JNZ";
+                    return "JNZ_L";
                 case 4:
-                    return "DEC";
+                    return "DEC_R";
                 case 5:
                     return "EXIT";
                 default:
@@ -134,4 +124,6 @@ namespace AssemblerLab1
             }
         }
     }
+    
+
 }

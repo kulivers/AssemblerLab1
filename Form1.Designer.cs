@@ -52,11 +52,11 @@
             this.textBox_SF = new System.Windows.Forms.TextBox();
             this.textBox_ZF = new System.Windows.Forms.TextBox();
             this.CommandsList = new System.Windows.Forms.ListView();
+            this.idCmd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmdName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.arg = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CommandsList_label = new System.Windows.Forms.Label();
-            this.idCmd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NameReg = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CommandsList_label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_index = new System.Windows.Forms.TextBox();
             this.Registers_Groupbox.SuspendLayout();
@@ -175,7 +175,7 @@
             this.textBox_command_bin.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_command_bin.Location = new System.Drawing.Point(274, 23);
             this.textBox_command_bin.Name = "textBox_command_bin";
-            this.textBox_command_bin.Size = new System.Drawing.Size(163, 29);
+            this.textBox_command_bin.Size = new System.Drawing.Size(179, 29);
             this.textBox_command_bin.TabIndex = 2;
             this.textBox_command_bin.Text = "0000_????_????_0000";
             this.textBox_command_bin.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -335,6 +335,10 @@
             this.CommandsList.View = System.Windows.Forms.View.Details;
             this.CommandsList.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
+            // idCmd
+            // 
+            this.idCmd.Text = "idCmd";
+            // 
             // cmdName
             // 
             this.cmdName.Text = "cmd";
@@ -342,6 +346,10 @@
             // arg
             // 
             this.arg.Text = "arg";
+            // 
+            // NameReg
+            // 
+            this.NameReg.Text = "NameReg";
             // 
             // CommandsList_label
             // 
@@ -352,14 +360,6 @@
             this.CommandsList_label.Size = new System.Drawing.Size(136, 22);
             this.CommandsList_label.TabIndex = 9;
             this.CommandsList_label.Text = "Commands List";
-            // 
-            // idCmd
-            // 
-            this.idCmd.Text = "idCmd";
-            // 
-            // NameReg
-            // 
-            this.NameReg.Text = "NameReg";
             // 
             // label2
             // 
